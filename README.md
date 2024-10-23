@@ -1,34 +1,26 @@
-# Detect-SSLmitm
+# ssl_mitm
 
-This PowerShell script will determine if your connection to external servers over HTTPS is being decrypted by an intercepting proxy such as the internet proxies commonly found in corporate environments. It does this by comparing the SSL intermediate certificate being used for your connection to the true/known SSL certificate for the server.
+A PowerShell-based tool for detecting potential SSL/TLS man-in-the-middle (MITM) attacks by monitoring certificate changes across various websites.
 
-Kudos to [@malcomvetter](https://twitter.com/malcomvetter) for the idea to write this script and for some improvement tips. For example, comparing the intermediate certificate to reduce false positives.
+All credit to https://github.com/clr2of8/Detect-SSLmitm as this is a fork of that repo
 
 ## Usage
 
-Load the PowerShell Module functions from the Windows command prompt as follows:
-
+1. Download the ssl_mitm.ps1 script to your local machine
+2. Set the appropriate PowerShell execution policy:
+`Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`
+3. Dot source the script and initialize golden hashes:
 ```
-powershell -exec bypass
-Import-Module .\Detect-SSLmitm.ps1
-```
-
-Determine which sites (in the url list) are being decrypted by an intercepting proxy:
-
-```
-Detect-SSLmitm
+> . .\ssl_mitm.ps1
+> Update-GoldenHashes -UpdateScript
 ```
 
+Run: 
+```
+> . .\ssl_mitm.ps1
+> Test-SSLMitm
+```
 The Output looks like this:
 
-![Example Usage](https://github.com/clr2of8/Detect-SSLmitm/raw/master/images/Usage.png)
+![image](https://github.com/user-attachments/assets/2c00fbfe-0708-4acd-b159-885638a43e1d)
 
-
-
-If you would like to configure which sites are checked, open the script and edit the "Uris" list near the bottom, then call the following function.
-
-```
-Get-GoldenHashes
-```
-
-Note, it is important to generate the Golden certificate hashes from a network location known to not decrypt SSL traffic, otherwise you will get false positives.
