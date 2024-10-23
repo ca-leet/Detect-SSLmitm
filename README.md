@@ -17,7 +17,6 @@ All credit to https://github.com/clr2of8/Detect-SSLmitm as this is a fork of tha
 
 Run: 
 ```
-> . .\ssl_mitm.ps1
 > Test-SSLMitm
 ```
 The Output looks like this:
