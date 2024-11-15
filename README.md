@@ -6,7 +6,7 @@ All credit to https://github.com/clr2of8/Detect-SSLmitm as this is a fork of tha
 
 ## Usage
 
-1. Download the ssl_mitm.ps1 script to your local machine
+1. Download the ssl_mitm.ps1 script to your local machine and remote machine
 2. Set the appropriate PowerShell execution policy:
 `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`
 3. Dot source the script and initialize golden hashes:
@@ -15,11 +15,11 @@ All credit to https://github.com/clr2of8/Detect-SSLmitm as this is a fork of tha
 > Update-GoldenHashes -UpdateScript
 ```
 
-Run: 
+Run on both machines: 
 ```
 > Test-SSLMitm
 ```
-The Output looks like this:
+The Output looks like this (compare output from local vs remote):
 
 ![image](https://github.com/user-attachments/assets/2c00fbfe-0708-4acd-b159-885638a43e1d)
 
